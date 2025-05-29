@@ -1,20 +1,28 @@
 {
-  "name": "nuxt-app",
+  "name": "fret-theory",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "build": "nuxt build",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "generate": "nuxt generate",
+    "postinstall": "nuxt prepare",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "prepare": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "^3.17.4",
+    "nuxt": "^3.10.0",
     "vue": "^3.5.15",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "nuxt-icon": "^1.0.0-beta.7"
+    "@nuxt/test-utils": "^3.10.0",
+    "vitest": "^1.5.0",
+    "jsdom": "^24.0.0",
+    "happy-dom": "^11.13.0",
+    "typescript": "^5.4.0"
   }
 }
