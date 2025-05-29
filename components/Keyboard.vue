@@ -2,10 +2,10 @@
   <div class="component">
     <div class="keyboard">
       <div class="controls">
-        <OctavePitch class="control" />
-        <OctaveRange class="control" />
-        <NoteLabels class="control" />
-        <ToneSelector class="control" />
+        <OctavePitch  />
+        <OctaveRange />
+        <NoteLabels  />
+        <ToneSelector  />
         <ChordSelector />
       </div>
       <Keys />
@@ -14,15 +14,28 @@
   </div>
 </template>
 
+<script setup lang="ts">
+import { ref } from 'vue';
+</script>
+
 <style scoped>
 /*  Global  */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
 .component {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: fit-content;
   position: relative;
-  justify-content: flex-start;
+  justify-content: center;
+  width: 100vw;
 }
 /*  Controls  */
 .controls {
@@ -61,7 +74,6 @@
   justify-content: flex-start;
   flex-direction: column;
   padding: 2em 4em 1em;
+  margin: 0 auto;
 }
-
-
 </style>
