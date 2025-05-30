@@ -1,5 +1,5 @@
 <template>
-  <div class="octave-pitch control">
+  <div class="control">
   <p>Pitch</p>
   <div class="base-octave-selector">
     <button @click="changeBaseOctave('-')">-</button>

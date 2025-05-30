@@ -23,13 +23,23 @@ ol {
   list-style: none;
 }
 
+h1,h2,h3,h4,h5,h6,p {
+  padding: 0;
+  margin: 0;
+};
+
 button,
 input {
   font-family: inherit;
 }
 
-.control-label {
-  font-size: 1rem;
-  text-align: center;
-  text-wrap: nowrap;
+.control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  background-color: var(--secondarygrey);
+  border-radius: 10px;
+  gap: 20px;
 }

@@ -1,13 +1,15 @@
 //---Imports---//
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 export const useKeyboardStore = defineStore("global", () => {
 
   //---State---//
   const notes = ['C', 'Cs', 'D', 'Ds', 'E', 'F', 'Fs', 'G', 'Gs', 'A', 'As', 'B'];
-  const octaveAmount = ref("2");
   const startingOctave = ref(3);
+  const octaveAmount = ref("2");
+  const notesDisplayed = ref('all');
+  const noteLabels = ['all', 'chord', 'none'];
 
   //---Setters---//
   function setOctaveAmount(amount) {
@@ -60,5 +62,7 @@ export const useKeyboardStore = defineStore("global", () => {
     changeBaseOctave,
     startingOctave,
     setOctaveAmount,
+    notesDisplayed,
+    noteLabels
    };
 });

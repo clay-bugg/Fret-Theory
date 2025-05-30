@@ -1,5 +1,5 @@
 <template>
-  <div class="octave-range control">
+  <div class="control">
     <p class="control-label">Octaves: {{ octaveAmount }}</p>
     <div class="octave-selector">
       <input v-model="store.octaveAmount" :class="{ active: store.octaveAmount === '1' }" type="radio" value="1" />

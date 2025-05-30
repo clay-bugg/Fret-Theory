@@ -51,15 +51,6 @@ body {
   gap: 3em;
   margin-bottom: 0.5em;
 }
-.control {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  gap: 0.5em;
-  padding: 0.5em 0;
-}
 /*  Keyboard  */
 .keyboard {
   border: 1px solid black;
