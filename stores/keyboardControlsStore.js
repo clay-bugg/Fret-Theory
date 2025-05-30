@@ -9,7 +9,8 @@ export const useKeyboardStore = defineStore("global", () => {
   const startingOctave = ref(3);
   const octaveAmount = ref("2");
   const notesDisplayed = ref('all');
-  const noteLabels = ['all', 'chord', 'none'];
+  const noteLabels = ref(['all', 'chord', 'none']);
+  const currentTone = ref('piano');
 
   //---Setters---//
   function setOctaveAmount(amount) {
