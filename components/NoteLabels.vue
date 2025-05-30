@@ -28,20 +28,10 @@ const store = useKeyboardStore();
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5em;
+  width: fit-content;
 }
 .note-label-selectors input {
-  width: 25px;
-  height: 25px;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border: 2px solid black;
-  background-color: rgb(152, 12, 12);
-  border-radius: 5px;
-  cursor: pointer;
-}
-.note-label-selectors input.active {
-  background-color: rgb(133, 206, 23);
+  width: 10px;
+  height: 10px;
 }
 </style>

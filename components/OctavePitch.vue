@@ -26,12 +26,9 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 width: fit-content;
-gap: 0.4em;
-font-size: 1.2rem;
-font-weight: 700;
 }
 .base-octave button {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
 }
 </style>

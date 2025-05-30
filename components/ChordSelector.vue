@@ -27,7 +27,5 @@ const keysStore = useKeyboardStore();
 </script>
 
 <style scoped>
-body {
-  
-}
+
 </style>
