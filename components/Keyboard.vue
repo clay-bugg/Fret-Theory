@@ -15,46 +15,86 @@
 </template>
 
 <script setup lang="ts">
+
+import * as Tone from 'tone';
 const store = useControlStore();
+
+let synth;
+let sampler;
+let polySynth;
+
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    synth = new Tone.Synth({
+      oscillator: {
+        type: 'sine'
+      },
+      envelope: {
+        attack: 0.05,
+        decay: 0.2,
+        sustain: 0.3,
+        release: 1
+      }
+    }).toDestination();
+
+    sampler = new Tone.Sampler({
+      urls: {
+        "A1": 'A1.mp3',
+        "A2": 'A2.mp3',
+        "A3": 'A3.mp3',
+        "A4": 'A4.mp3',
+        "A5": 'A5.mp3',
+        "A6": 'A6.mp3',
+        "A7": 'A7.mp3',
+      },
+      baseUrl: '/sounds/piano-samples/',
+      onload: () => {
+        console.log('Sampler loaded');
+      }
+    }).toDestination();
+
+    polySynth = new Tone.PolySynth(Tone.Synth).toDestination();
+  }
+});
+
+
+
 </script>
 
 <style scoped>
-.test {
-  margin: 0 auto;
-}
 /*  Global  */
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
   width: 100vw;
   height: 100vh;
 }
 .component {
-  display: flex;
-  flex-direction: column;
+  display: flex; flex-direction: column;
   align-items: center;
   width: 100vw;
   position: relative;
   justify-content: center;
 }
+/*  Keyboard  */
+.keyboard {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-start;
+  width: 1100px; height: fit-content;
+  border: 1px solid black;
+  border-radius: 15px;
+  border-top-left-radius: 40px; border-top-right-radius: 40px;
+  padding: 2em 4em 1em;
+  background-color: rgb(42,42,42);
+}
 /*  Controls  */
 .controls {
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  align-items: center; justify-content: space-evenly;
   width: 100%;
   color: rgb(215, 215, 215);
 }
-/*  Keyboard  */
-.keyboard {
-  border: 1px solid black;
-  width: 1100px;
-  height: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-}
+
+
+
 </style>

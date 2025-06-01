@@ -5,12 +5,13 @@ import { ref } from 'vue';
 
 
 export const useChordStore = defineStore("chord", () => {
-  const store = useControlStore();
+  //---Stores---//
+  const controlStore = useControlStore();
   //---Key Generation---//
   const pianoKeys = computed(() => {
     const octavesArray = Array.from(
-      { length: store.octaveAmount.value },
-      (_, i) => store.startingOctave.value + i
+      { length: controlStore.octaveAmount.value },
+      (_, i) => controlStore.startingOctave.value + i
     );
     const keys = [];
     for (const octave of octavesArray) {
@@ -23,6 +24,38 @@ export const useChordStore = defineStore("chord", () => {
       });
     }
     return keys;
+  });
+  //---Dynamic Key Styles---//
+  const keyStyles = computed(() => {
+
+    const whiteKeyCount = computed(() =>
+      pianoKeys.value.filter((k) => !k.sharp).length
+    );
+  
+    const keysHeight = computed(() => {
+      if (octaveAmount.value === '1') {
+        return '350px'
+      } else if (octaveAmount.value === '2') {
+        return '260px'
+      } else if (octaveAmount.value === '3') {
+        return '180px'
+      }
+    });
+    const keyFontSize = computed(() => {
+    if (octaveAmount.value === '1') {
+      return '1.6rem'
+    } else if (octaveAmount.value === '2') {
+      return '1rem'
+    } else if (octaveAmount.value === '3') {
+      return '0.8rem'
+    }
+  });
+  
+    return {
+      '--white-key-count': whiteKeyCount.value,
+      'height': keysHeight.value,
+      'font-size': keyFontSize.value,
+    }
   });
   //---State---//
   const rootNote = store.rootNote;
@@ -96,18 +129,10 @@ export const useChordStore = defineStore("chord", () => {
       formula: ["1", "3", "♭5", "7"]
     }
   ]);
-  
-
-
-
-  
 
   return {
     pianoKeys,
-    rootNote,
-    notes,
-    selectedChordType,
-    chordTypes,
+    keyStyles,
     
   }
 });
