@@ -1,5 +1,6 @@
 <template>
   <div class="component">
+
     <div class="keyboard">
       <div class="controls">
         <OctavePitch  />
@@ -10,6 +11,7 @@
       </div>
       <Keys />
     </div>
+    
     <ChordPlayed />
   </div>
 </template>
