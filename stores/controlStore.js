@@ -1,6 +1,6 @@
 //---Imports---//
 import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 
 export const useControlStore = defineStore('controls', () => {
 
@@ -24,7 +24,6 @@ export const useControlStore = defineStore('controls', () => {
   };
 
   const octaveAmount = ref(2);
-
 
   const notesShown = ref('all');
   const noteLabels = ref(['all', 'chord', 'none']);

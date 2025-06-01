@@ -1,6 +1,6 @@
 //---Imports---//
 import { defineStore } from "pinia";
-import { ref, watch } from "vue";
+import { ref } from "vue";
 
 export const useChordTypeStore = defineStore('type', ()  => { 
 

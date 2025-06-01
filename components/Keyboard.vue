@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-
+const store = useControlStore();
 </script>
 
 <style scoped>

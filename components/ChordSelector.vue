@@ -9,11 +9,11 @@
         </option>
       </select>
 
-      <select v-model="chordType" class="chord-selector">
-        <option v-for="chord in chordTypes"
-          :key="chord.value"
-          :value="chord.value">
-            {{ chord.label }}
+      <select v-model="selectedChordType" class="chord-selector">
+        <option v-for="type in chordTypes"
+          :key="type.value"
+          :value="type.value">
+            {{ type.label }}
         </option>
       </select>
 
@@ -23,10 +23,10 @@
 
 <script setup>
 import { storeToRefs } from 'pinia';
-const store = useControlStore();
+
 const chordStore = useChordStore();
-const { rootNote } = storeToRefs(store);
-const { notes, chordTypes } = storeToRefs(chordStore);
+const { rootNote, notes, selectedChordType, chordTypes } = storeToRefs(chordStore);
+
 </script>
 
 <style scoped>
