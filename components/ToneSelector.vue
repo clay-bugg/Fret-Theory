@@ -9,7 +9,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
+const store = useControlStore();
+const { currentTone } = storeToRefs(store);
+
+
 </script>
 
 <style scoped>

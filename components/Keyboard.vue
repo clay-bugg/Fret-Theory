@@ -3,7 +3,7 @@
     <div class="keyboard">
       <div class="controls">
         <OctavePitch  />
-        <OctaveRange />
+        <KeysDisplayed />
         <NoteLabels  />
         <ToneSelector  />
         <ChordSelector />
@@ -15,10 +15,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+
 </script>
 
 <style scoped>
+.test {
+  margin: 0 auto;
+}
 /*  Global  */
 body {
   display: flex;
@@ -32,16 +35,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: fit-content;
+  width: 100vw;
   position: relative;
   justify-content: center;
-  width: 100vw;
 }
 /*  Controls  */
 .controls {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 100%;
   color: rgb(215, 215, 215);
 }

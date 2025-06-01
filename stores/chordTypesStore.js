@@ -5,6 +5,7 @@ import { ref, watch } from "vue";
 export const useChordTypeStore = defineStore('type', ()  => { 
 
   //---State---//
+  const chordNotes = ([]);
   const chordTypes = ref([
     {
       label: "Major",
@@ -73,5 +74,6 @@ export const useChordTypeStore = defineStore('type', ()  => {
       formula: ["1", "3", "♭5", "7"]
     }
   ]);
-  return { chordTypes };
+  return { chordTypes },
+  chordNotes
 })

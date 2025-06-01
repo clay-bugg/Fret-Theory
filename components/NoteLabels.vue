@@ -1,36 +1,34 @@
 <template>
   <div class="control">
     <p>Note Labels</p>
-      <div  class="note-label-selectors">
-        <input v-for="(label, index) in store.noteLabels" 
-          :key="label" 
-          v-model="store.notesDisplayed" 
-          class="notes-button" 
-          :class="{ active: store.notesDisplayed === label  }"
+      <div v-for="(label, index) in noteLabels"
+       :key="index"
+        class="note-label-selector">
+        <input v-model="notesShown" 
+          :value="label"
+          :class="{ active: notesShown === label }"
           type="radio"
-          name="note-labels-button"
-          :value="label"/>
-          {{ label  }}
-        </div>
+          name="note-label"/>
+        {{ label }}
       </div>
+   </div>
 </template>
 
 <script setup>
-//---Imports---//
-//---State---//
-const store = useKeyboardStore();
-
-
+import { storeToRefs } from 'pinia';
+const store = useControlStore();
+const { notesShown, noteLabels } = storeToRefs(store);
 </script>
 
 <style scoped>
-.note-label-selectors {
+.note-label-selector {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: fit-content;
+  
 }
-.note-label-selectors input {
+.note-label-selector input {
   width: 10px;
   height: 10px;
 }

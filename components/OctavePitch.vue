@@ -2,22 +2,19 @@
   <div class="control">
   <p>Pitch</p>
   <div class="base-octave-selector">
-    <button @click="changeBaseOctave('-')">-</button>
-    <p v-if="store.octaveAmount === '1'">{{ store.startingOctave }}</p>
-    <p v-else-if="store.octaveAmount === '2'">{{ store.startingOctave }}-{{ store.startingOctave + 1 }}</p>
-    <p v-else-if="store.octaveAmount === '3'">{{ store.startingOctave }}-{{ store.startingOctave + 2 }}</p>
-    <button @click="changeBaseOctave('+')">+</button>
+    <button @click="store.changeOctaveRange('-')">-</button>
+    <p v-if="octaveAmount === 1">{{ startingOctave.toString() }}</p>
+    <p v-else-if="octaveAmount === 2">{{ startingOctave.toString() }}-{{ (startingOctave + 1).toString() }}</p>
+    <p v-else-if="octaveAmount === 3">{{ startingOctave.toString() }}-{{ (startingOctave + 2).toString() }}</p>
+    <button @click="store.changeOctaveRange('+')">+</button>
   </div>
 </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
-const store = useKeyboardStore();
-const { changeBaseOctave } = useKeyboardStore();
-const { startingOctave } = useKeyboardStore();
-const { octaveAmount } = useKeyboardStore();
+import { storeToRefs } from 'pinia';
+const store = useControlStore();
+const { octaveAmount, startingOctave, changeOctaveRange } = storeToRefs(store);
  </script>
 
 <style scoped>

@@ -27,13 +27,10 @@
 </template>
 
 <script setup>
-//  Imports  //
-import { ref } from 'vue';
-import * as Tone from 'tone';
-//  State  //
-const store = useKeyboardStore();
-const notes = store.notes;
-
+const store = useControlStore();
+const chordStore = useChordStore();
+const { rootNote, notesDisplayed } = storeToRefs(store);
+const { pianoKeys, chordNotes } = storeToRefs(chordStore);
 </script>
 
 <style scoped>

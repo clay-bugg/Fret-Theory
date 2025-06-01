@@ -2,8 +2,8 @@
   <Keyboard />
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue';
+<script setup>
+
 
 
 </script>
@@ -14,5 +14,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+  width: 100vw;
 }
 </style>
