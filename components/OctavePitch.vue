@@ -2,19 +2,19 @@
   <div class="control">
   <p>Pitch</p>
   <div class="base-octave-selector">
-    <button @click="store.changeOctaveRange('-')">-</button>
+    <button @click="control.changeOctaveRange('-')">-</button>
     <p v-if="octaveAmount === 1">{{ startingOctave.toString() }}</p>
     <p v-else-if="octaveAmount === 2">{{ startingOctave.toString() }}-{{ (startingOctave + 1).toString() }}</p>
     <p v-else-if="octaveAmount === 3">{{ startingOctave.toString() }}-{{ (startingOctave + 2).toString() }}</p>
-    <button @click="store.changeOctaveRange('+')">+</button>
+    <button @click="control.changeOctaveRange('+')">+</button>
   </div>
 </div>
 </template>
 
 <script setup>
 import { storeToRefs } from 'pinia';
-const store = useControlStore();
-const { octaveAmount, startingOctave, changeOctaveRange } = storeToRefs(store);
+const control = useControlStore();
+const { octaveAmount, startingOctave } = storeToRefs(control);
  </script>
 
 <style scoped>

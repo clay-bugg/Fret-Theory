@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-export const useChordStore = defineStore('chord', () => { 
+export const useChordPlayer = defineStore('chord', () => { 
   const keyboard = '/stores/keyboardStore.js/';
   const notes = keyboard.notes;
 

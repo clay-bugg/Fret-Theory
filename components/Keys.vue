@@ -1,8 +1,9 @@
 <template>
-  <div class="keys" :style="keyStyles">
+  <div class="keys">
     <div v-for="(key, index) in pianoKeys"
       class="key"
       :key="`${key.note}${key.octave}`"
+      :style="keyStyles"
       :id="`interval-${chordNotes.indexOf(key.note) + 1}`"
       :class="[{
         black: key.sharp,
@@ -26,10 +27,17 @@
 </template>
 
 <script setup>
-const store = useControlStore();
-const chordStore = useChordStore();
-const { rootNote, notesDisplayed } = storeToRefs(store);
-const { pianoKeys, chordNotes } = storeToRefs(chordStore);
+const control = useControlStore();
+const { rootNote, notesDisplayed } = storeToRefs(control);
+
+const chord = useChordPlayer();
+const { pianoKeys, chordNotes } = chord;
+
+const keyboardStore = useKeyboardStore();
+const keyboard = useKeyboardStore();
+const { keyStyles } = storeToRefs(keyboardStore);
+
+
 </script>
 
 <style scoped>

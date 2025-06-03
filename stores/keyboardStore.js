@@ -1,17 +1,19 @@
 //---Imports---//
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useControlStore } from './controlStore.js';
 
 export const useKeyboardStore = defineStore('keyboard', () => { 
   //---Stores---//
   const control = useControlStore();
-  //---Constants---//
   const notes = ref(['C', 'Cs', 'D', 'Ds', 'E', 'F', 'Fs', 'G', 'Gs', 'A', 'As', 'B']);
   //---Key Generation---//
   const pianoKeys = computed(() => {
+    console.log("control.octaveAmount =", control.octaveAmount.value);
+    console.log("control.startingOctave =", control.startingOctave.value);
     const octavesArray = Array.from(
-      { length: control.control.octaveAmount.value },
-      (_, i) => control.startingOctave.value + i
+      { length: Number(control.octaveAmount.value) },
+      (_, i) => Number(control.startingOctave.value) + i
     );
 
     const keys = [];
@@ -24,8 +26,8 @@ export const useKeyboardStore = defineStore('keyboard', () => {
         });
       });
     }
-
-    return pianoKeys;
+    console.log("built keys array:", keys); 
+    return keys;
   });
   //---Dynamic Key Styles---//
   const keyStyles = computed(() => {
@@ -35,7 +37,7 @@ export const useKeyboardStore = defineStore('keyboard', () => {
     );
   
     const keysHeight = computed(() => {
-      if (control.control.octaveAmount.value === '1') {
+      if (control.octaveAmount.value === '1') {
         return '350px'
       } else if (control.octaveAmount.value === '2') {
         return '260px'
@@ -61,7 +63,6 @@ export const useKeyboardStore = defineStore('keyboard', () => {
   });
 
   return {
-    notes,
     pianoKeys,
     keyStyles,
   }

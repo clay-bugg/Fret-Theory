@@ -4,7 +4,7 @@ import { ref } from 'vue';
 
 export const useControlStore = defineStore('controls', () => {
 
-  const startingOctave = ref(4);
+  const startingOctave = ref(1);
   function changeOctaveRange(op) { 
     if (op === '+') {
       if (startingOctave.value === 6) {

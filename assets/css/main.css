@@ -13,7 +13,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: var(--offwhite);
-  font-family: 'Sans Serif';
+  font-family: 'Helvetica';
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -44,5 +44,5 @@ input {
   height: 100%;
   border: 1px soloid black;
   border-radius: 5px;
-  color: var(--maingrey)
+  color: #f2f2f2;
 }

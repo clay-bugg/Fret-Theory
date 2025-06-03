@@ -9,13 +9,11 @@
         <ToneSelector  />
         <ChordSelector />
       </div>
-      <Keys />
+      <Keys class="keys"/>
     </div>
-    
     <ChordPlayed />
   </div>
 </template>
-
 <script setup lang="ts">
 
 import * as Tone from 'tone';
@@ -49,7 +47,7 @@ onMounted(() => {
         "A6": 'A6.mp3',
         "A7": 'A7.mp3',
       },
-      baseUrl: '/sounds/piano-samples/',
+      baseUrl: '/samples/piano/',
       onload: () => {
         console.log('Sampler loaded');
       }
@@ -62,7 +60,6 @@ onMounted(() => {
 
 
 </script>
-
 <style scoped>
 /*  Global  */
 body {
@@ -93,10 +90,16 @@ body {
 .controls {
   display: flex;
   align-items: center; justify-content: space-evenly;
-  width: 100%;
+  width: 100%; height: 6em;
   color: rgb(215, 215, 215);
 }
-
-
-
+.keys {
+  display: flex;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+  border-top: 10px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
 </style>

@@ -23,9 +23,9 @@
 
 <script setup>
 import { storeToRefs } from 'pinia';
-
-const chordStore = useChordStore();
-const { rootNote, notes, selectedChordType, chordTypes } = storeToRefs(chordStore);
+const keyboardStore = useKeyboardStore();
+const notes = keyboardStore.notes;
+const { rootNote, selectedChordType, chordTypes } = useChordPlayer();
 
 </script>
 

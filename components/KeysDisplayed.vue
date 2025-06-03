@@ -9,8 +9,8 @@
 
 <script setup>
 import { storeToRefs } from 'pinia';
-const store = useControlStore();
-const { octaveAmount } = storeToRefs(store);
+const control = useControlStore();
+const { octaveAmount } = storeToRefs(control);
 
 </script>
 
