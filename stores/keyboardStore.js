@@ -7,15 +7,12 @@ export const useKeyboardStore = defineStore('keyboard', () => {
   //---Stores---//
   const control = useControlStore();
   const notes = ref(['C', 'Cs', 'D', 'Ds', 'E', 'F', 'Fs', 'G', 'Gs', 'A', 'As', 'B']);
-  //---Key Generation---//
+  //---Key Generation---//Ÿ
   const pianoKeys = computed(() => {
-    console.log("control.octaveAmount =", control.octaveAmount.value);
-    console.log("control.startingOctave =", control.startingOctave.value);
     const octavesArray = Array.from(
       { length: Number(control.octaveAmount.value) },
       (_, i) => Number(control.startingOctave.value) + i
     );
-
     const keys = [];
     for (const octave of octavesArray) {
       notes.value.forEach((note) => {
@@ -26,7 +23,6 @@ export const useKeyboardStore = defineStore('keyboard', () => {
         });
       });
     }
-    console.log("built keys array:", keys); 
     return keys;
   });
   //---Dynamic Key Styles---//
@@ -35,7 +31,6 @@ export const useKeyboardStore = defineStore('keyboard', () => {
     const whiteKeyCount = computed(() =>
       pianoKeys.value.filter((k) => !k.sharp).length
     );
-  
     const keysHeight = computed(() => {
       if (control.octaveAmount.value === '1') {
         return '350px'
@@ -65,5 +60,6 @@ export const useKeyboardStore = defineStore('keyboard', () => {
   return {
     pianoKeys,
     keyStyles,
+    notes,
   }
 })

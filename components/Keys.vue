@@ -3,7 +3,6 @@
     <div v-for="(key, index) in pianoKeys"
       class="key"
       :key="`${key.note}${key.octave}`"
-      :style="keyStyles"
       :id="`interval-${chordNotes.indexOf(key.note) + 1}`"
       :class="[{
         black: key.sharp,
@@ -34,9 +33,6 @@ const chord = useChordPlayer();
 const { pianoKeys, chordNotes } = chord;
 
 const keyboardStore = useKeyboardStore();
-const keyboard = useKeyboardStore();
-const { keyStyles } = storeToRefs(keyboardStore);
-
 
 </script>
 
@@ -44,8 +40,11 @@ const { keyStyles } = storeToRefs(keyboardStore);
 .keys {
   display: flex;
   width: 100%;
+  height: 6em;
   position: relative;
+  margin-bottom: 1em;
   z-index: 0;
+  overflow: hidden;
   border-top: 10px solid black;
   border-left: 2px solid black;
   border-right: 2px solid black;

@@ -4,7 +4,7 @@ import { ref } from 'vue';
 
 export const useControlStore = defineStore('controls', () => {
 
-  const startingOctave = ref(1);
+  const startingOctave = ref(2);
   function changeOctaveRange(op) { 
     if (op === '+') {
       if (startingOctave.value === 6) {
@@ -23,8 +23,6 @@ export const useControlStore = defineStore('controls', () => {
   
   };
 
-  const octaveAmount = ref(2);
-
   const notesShown = ref('all');
   const noteLabels = ref(['all', 'chord', 'none']);
   const currentTone = ref('piano');
@@ -32,7 +30,6 @@ export const useControlStore = defineStore('controls', () => {
 
   return {
     startingOctave,
-    octaveAmount,
     notesShown,
     noteLabels,
     currentTone,
