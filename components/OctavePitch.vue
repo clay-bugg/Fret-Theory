@@ -2,18 +2,18 @@
   <div class="control">
   <p>Pitch</p>
   <div class="base-octave-selector">
-    <button @click="control.changeOctaveRange('-')">-</button>
-    <p>{startingOctave + startingOctave +2}</p>
+    <button @click="store.changeOctaveRange('-')">-</button>
+    <p>{{ startingOctave }}</p>
 
-    <button @click="control.changeOctaveRange('+')">+</button>
+    <button @click="store.changeOctaveRange('+')">+</button>
   </div>
 </div>
 </template>
 
 <script setup>
 import { storeToRefs } from 'pinia';
-const control = useControlStore();
-const { startingOctave } = storeToRefs(control);
+const store = useGlobalStore();
+const { startingOctave } = storeToRefs(store);
  </script>
 
 <style scoped>

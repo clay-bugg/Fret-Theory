@@ -4,13 +4,13 @@
     <div class="chord-finder-options">
 
       <select v-model="rootNote"  class="note-selector">
-        <option v-for="note in keyboard.notes" :key="note" :value="note">
+        <option v-for="note in store.notes" :key="note" :value="note">
           {{ note.replace('s', '#') }}
         </option>
       </select>
 
-      <select v-model="selectedChordType" class="chord-selector">
-        <option v-for="type in chordTypes"
+      <select v-model="chordStore.selectChordType" class="chord-selector">
+        <option v-for="type in chordStore.chordTypes"
           :key="type.value"
           :value="type.value">
             {{ type.label }}
@@ -22,11 +22,8 @@
 </template>
 
 <script setup>
-import { storeToRefs } from 'pinia';
-
-const keyboard = useKeyboardStore();
-const { rootNote, selectedChordType, chordTypes } = useChordPlayer();
-
+const chordStore = useChordStore();
+const store = useGlobalStore();
 </script>
 
 <style scoped>

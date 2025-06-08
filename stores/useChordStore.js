@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
+import { useGlobalStore } from './globalStore.js';
 
-export const useChordPlayer = defineStore('chord', () => { 
-  const keyboard = '/stores/keyboardStore.js/';
-  const notes = keyboard.notes;
 
-  const rootNote = ref('');
-  const selectedChordType = ref('');
+export const useChordStore = defineStore('chord', () => { 
+
+  const { notes } = useGlobalStore();
+  const { rootNote } = useGlobalStore();
 
   const chordTypes = ref([
     { label: 'Major', value: 'maj', intervals: [0, 4, 7] },
@@ -22,8 +22,10 @@ export const useChordPlayer = defineStore('chord', () => {
     { label: 'Major 7♭5', value: 'maj7♭5', intervals: [0, 4, 6, 11] },
   ]);
 
-    const selectedChord = computed(() => { 
-      return chordTypes.value.find((chord) => chord.value === selectedChordType.value);
+  const selectedChordType = ref('');
+
+  const selectChordType = computed(() => { 
+      return chordTypes.value.find((chord) => chord === selectedChordType.value);
     });
   
   const chordNotes = computed(() => {
@@ -36,17 +38,16 @@ export const useChordPlayer = defineStore('chord', () => {
     });
   });
 
-    const chordFormula = computed(() => {
+  const chordFormula = computed(() => {
       return selectedChord.value?.formula ?? [];
-    });
+  });
   
     return {
-      notes,
-      rootNote,
-      selectedChordType,
       chordTypes,
+      selectChordType,
+      selectedChordType,
       chordNotes,
       chordFormula,
-      selectedChord,
+     
     };
   });

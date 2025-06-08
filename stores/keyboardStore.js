@@ -1,65 +1,32 @@
 //---Imports---//
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
-import { useControlStore } from './controlStore.js';
+import { useGlobalStore } from './globalStore.js';
 
-export const useKeyboardStore = defineStore('keyboard', () => { 
+export const useKeyboardStore = defineStore('keyboard', () => {
   //---Stores---//
-  const control = useControlStore();
-  const notes = ref(['C', 'Cs', 'D', 'Ds', 'E', 'F', 'Fs', 'G', 'Gs', 'A', 'As', 'B']);
-  //---Key Generation---//Ÿ
-  const pianoKeys = computed(() => {
-    const octavesArray = Array.from(
-      { length: Number(control.octaveAmount.value) },
-      (_, i) => Number(control.startingOctave.value) + i
-    );
-    const keys = [];
-    for (const octave of octavesArray) {
-      notes.value.forEach((note) => {
-        keys.push({
-          note,
-          octave,
-          sharp: note.includes("s"),
-        });
-      });
-    }
-    return keys;
-  });
-  //---Dynamic Key Styles---//
-  const keyStyles = computed(() => {
+  const store = useGlobalStore();
+  const startingOctave = store.startingOctave;
+  //---Static---//
 
-    const whiteKeyCount = computed(() =>
-      pianoKeys.value.filter((k) => !k.sharp).length
-    );
-    const keysHeight = computed(() => {
-      if (control.octaveAmount.value === '1') {
-        return '350px'
-      } else if (control.octaveAmount.value === '2') {
-        return '260px'
-      } else if (control.octaveAmount.value === '3') {
-        return '180px'
-      }
+  //---Key Generation---//Ÿ
+  const octaves = [1, 2, 3];
+
+  const pianoKeys = computed(() => {
+    const keys = [];
+    octaves.forEach((octave) => {
+      store.notes.forEach((note) => {
+        keys.push({ note: note, octave: octave, sharp: note.includes('s') });
+      });
     });
-    const keyFontSize = computed(() => {
-    if (control.octaveAmount.value === '1') {
-      return '1.6rem'
-    } else if (control.octaveAmount.value === '2') {
-      return '1rem'
-    } else if (control.octaveAmount.value === '3') {
-      return '0.8rem'
-    }
-  });
-  
-    return {
-      '--white-key-count': whiteKeyCount.value,
-      'height': keysHeight.value,
-      'font-size': keyFontSize.value,
-    }
+    return keys;
   });
 
   return {
     pianoKeys,
-    keyStyles,
-    notes,
-  }
-})
+  };
+
+});
+
+  
+  

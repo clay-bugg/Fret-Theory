@@ -10,8 +10,8 @@
 
 <script setup>
 import { storeToRefs } from 'pinia';
-const control = useControlStore();
-const { currentTone } = storeToRefs(control);
+const store = useGlobalStore();
+const { currentTone } = storeToRefs(store);
 
 
 </script>

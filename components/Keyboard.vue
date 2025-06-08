@@ -4,12 +4,13 @@
     <div class="keyboard">
       <div class="controls">
         <OctavePitch  />
-        <KeysDisplayed />
         <NoteLabels  />
         <ToneSelector  />
         <ChordSelector />
       </div>
-      <Keys class="keys"/>
+      <div class="keys">
+      <Keys />
+      </div>
     </div>
     <ChordPlayed />
   </div>
@@ -17,7 +18,7 @@
 <script setup lang="ts">
 
 import * as Tone from 'tone';
-const store = useControlStore();
+const store = useGlobalStore();
 
 let synth;
 let sampler;
@@ -57,17 +58,9 @@ onMounted(() => {
   }
 });
 
-
-
 </script>
+
 <style scoped>
-/*  Global  */
-body {
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  width: 100vw;
-  height: 100vh;
-}
 .component {
   display: flex; flex-direction: column;
   align-items: center;
@@ -79,7 +72,7 @@ body {
 .keyboard {
   display: flex; flex-direction: column;
   align-items: center; justify-content: flex-start;
-  width: 1100px; height: fit-content;
+  width: 1100px; height: 300px;
   border: 1px solid black;
   border-radius: 15px;
   border-top-left-radius: 40px; border-top-right-radius: 40px;
@@ -90,16 +83,13 @@ body {
 .controls {
   display: flex;
   align-items: center; justify-content: space-evenly;
-  width: 100%; height: 6em;
+  width: 100%;
   color: rgb(215, 215, 215);
 }
 .keys {
   display: flex;
-  width: 100%;
+  width: 100%; height: 100%;
   position: relative;
-  z-index: 0;
-  border-top: 10px solid black;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
 }
+
 </style>

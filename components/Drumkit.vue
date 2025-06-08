@@ -1,16 +1,38 @@
 <template>
   <div class="drumkit">
-    <div class="hi-hat cymbal"></div>
-    <div class="crash cymbal"></div>
-    <div class="ride cymbal"></div>
-    <div class="snare drum"></div>
-    <div class="tom drum"></div>
+    <div v-for="drum in drums"
+     :key="drum.key" 
+     @click="playDrum(drum.key)"
+     :class="drumType"></div>
   <div class="kick drum"></div>
 </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 
+class Drum { 
+  constructor(name, type, url) {
+    this.name = name;
+    this.type = type;
+    this.url = url;
+  }
+}
+
+const drums = ref([
+  { name: 'kick', type: 'drum', url: '/samples/dfrum' },
+  { name: 'snare', type: 'drum', url: '' },
+  { name: 'tomhigh', type: 'drum', url: '' },
+  { name: 'tommid', type: 'drum', url: '' },
+  { name: 'tomlow', type: 'drum', url: '' },
+  { name: 'crash1', type: 'cymbal', url: '' },
+  { name: 'crash2', type: 'cymbal', url: '' },
+  { name: 'ride', type: 'cymbal', url: '' },
+  { name: 'ride-bell', type: 'cymbal', url: '' },
+  { name: 'hi-hat-open', type: 'cymbal', url: '' },
+  { name: 'high-hat-closed', type: 'cymbal', url: '' },
+  
+  ])
 </script>
 
 <style scoped>
@@ -20,7 +42,7 @@
   justify-content: center;
 }
   .drum {
-    border: 2px solid black;
+    border: 4px solid black;
     background: radial-gradient(from center, white, grey);
     width: 100px;
     height: 100px;

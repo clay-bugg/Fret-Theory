@@ -1,24 +1,26 @@
 <template>
   <div class="keys">
-    <div v-for="(key, index) in pianoKeys"
-      class="key"
+    <div
+      v-for="key in keyboard.pianoKeys"
       :key="`${key.note}${key.octave}`"
-      :id="`interval-${chordNotes.indexOf(key.note) + 1}`"
-      :class="[{
+      class="key"
+      :class="{
         black: key.sharp,
         white: !key.sharp,
-        'highlighted-note': chordNotes.includes(key.note),
-        'interval': chordNotes.includes(key.note),
+        'highlighted-note': chord.chordNotes.includes(key.note),
+        interval: chord.chordNotes.includes(key.note),
         'root-note': key.note === rootNote,
-        }]"
-      @mousedown="playKey(key.note, key.octave)"
-      @mouseup="stopKey(key.note, key.octave)"
-      @mouseleave="stopKey(key.note, key.octave)"
-      @keydown="playKeyboardKey(key.note, key.octave)"
-      @keyup="stopKeyboardKey(key.note, key.octave)">
-
-      <span v-if="notesDisplayed === 'all'">{{ key.note }}</span>
-      <span v-if="notesDisplayed === 'chord' && chordNotes.includes(key.note)">
+      }"
+      @mousedown="() => playKey(key.note, key.octave)"
+      @mouseup="() => stopKey(key.note, key.octave)"
+      @mouseleave="() => stopKey(key.note, key.octave)"
+      @keydown="() => playKeyboardKey(key.note, key.octave)"
+      @keyup="() => stopKeyboardKey(key.note, key.octave)"
+    >
+      <span v-if="notesShown === 'all'">
+        {{ key.note }}
+      </span>
+      <span v-else-if="notesShown === 'chord'">
         {{ key.note }}
       </span>
     </div>
@@ -26,21 +28,22 @@
 </template>
 
 <script setup>
-const control = useControlStore();
-const { rootNote, notesDisplayed } = storeToRefs(control);
 
-const chord = useChordPlayer();
-const { pianoKeys, chordNotes } = chord;
+const globalStore = useGlobalStore();
+const keyboard = useKeyboardStore();
+const chord = useChordStore();
 
-const keyboardStore = useKeyboardStore();
+const { notesShown, rootNote } = storeToRefs(globalStore);
+const { pianoKeys } = storeToRefs(keyboard);
+const { chordNotes } = storeToRefs(chord);
 
 </script>
 
 <style scoped>
 .keys {
   display: flex;
-  width: 100%;
-  height: 6em;
+  align-items: flex-start; justify-content: space-between;
+  width: 100%; height: 100%;
   position: relative;
   margin-bottom: 1em;
   z-index: 0;
@@ -52,32 +55,38 @@ const keyboardStore = useKeyboardStore();
 .key {
   display: flex; flex-direction: column;
   align-items: center; justify-content: flex-end;
+  
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  padding-bottom: 0.2em;
   cursor: pointer;
+  color: black;
+  font-size: 0.9rem;
 }
 .white {
-  height: 100%;
-  flex: 1;
+  width: 100%; height: 100%;  
   position: relative;
   z-index: 1;
   background-color: white; color: black;
+  border: 1px solid black;
 }
 .white:hover {
   background-color: rgb(240, 240, 240);
 }
 .black {
-  width: calc(100% / var(--white-key-count) * 0.6); height: 60%;
+  width: calc(100% / 21 * 12); height: 55%;
   position: relative;
-  left: calc(100% / var(--white-key-count) * 0.3);
+  left: calc(100% / 21 * 0.3);
   z-index: 2;
   overflow: hidden;
-  margin-left: calc(100% / var(--white-key-count) * -0.6);
+  margin-left: calc(100% / 21 * -0.6);
   padding-bottom: 0.4em;
   border: 2px solid black;
   border-top: 1px solid black;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   background-color: black; color: white;
-  box-shadow: -2px 0 1px rgba(0,0,0,0.5);
+
 }
 .black:hover {
   background-color: rgb(20, 20, 20);

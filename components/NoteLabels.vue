@@ -16,8 +16,8 @@
 
 <script setup>
 import { storeToRefs } from 'pinia';
-const control = useControlStore();
-const { notesShown, noteLabels } = storeToRefs(control);
+const store = useGlobalStore();
+const { notesShown, noteLabels } = storeToRefs(store);
 </script>
 
 <style scoped>
