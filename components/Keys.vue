@@ -62,6 +62,12 @@ const { chordNotes } = storeToRefs(chord);
   color: black;
   font-size: 0.9rem;
 }
+.key:hover {
+  cursor: pointer;
+}
+.key:active {
+  color: black;
+}
 .white {
   width: 100%; height: 100%;  
   position: relative;

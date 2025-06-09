@@ -1,6 +1,5 @@
 <template>
   <div class="component">
-
     <div class="keyboard">
       <div class="controls">
         <OctavePitch  />
@@ -16,18 +15,15 @@
     <ChordPlayed />
   </div>
 </template>
+
 <script setup lang="ts">
 
 import * as Tone from 'tone';
 import { onMounted } from 'vue';
 
-
-
-
 let synth;
 let sampler;
 let polySynth;
-
 
 </script>
 
@@ -64,7 +60,3 @@ let polySynth;
 }
 
 </style>
-
-function useGlobalStore() {
-  throw new Error('Function not implemented.');
-}

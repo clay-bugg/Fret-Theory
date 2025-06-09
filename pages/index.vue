@@ -1,5 +1,6 @@
 <template>
   <Keyboard />
+  <InfoPanel />
   
 </template>
 
