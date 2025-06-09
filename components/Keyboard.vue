@@ -5,6 +5,7 @@
       <div class="controls">
         <OctavePitch  />
         <NoteLabels  />
+        <KeyboardDisplay />
         <ToneSelector  />
         <ChordSelector />
       </div>
@@ -18,45 +19,15 @@
 <script setup lang="ts">
 
 import * as Tone from 'tone';
-const store = useGlobalStore();
+import { onMounted } from 'vue';
+
+
+
 
 let synth;
 let sampler;
 let polySynth;
 
-onMounted(() => {
-  if (typeof window !== 'undefined') {
-    synth = new Tone.Synth({
-      oscillator: {
-        type: 'sine'
-      },
-      envelope: {
-        attack: 0.05,
-        decay: 0.2,
-        sustain: 0.3,
-        release: 1
-      }
-    }).toDestination();
-
-    sampler = new Tone.Sampler({
-      urls: {
-        "A1": 'A1.mp3',
-        "A2": 'A2.mp3',
-        "A3": 'A3.mp3',
-        "A4": 'A4.mp3',
-        "A5": 'A5.mp3',
-        "A6": 'A6.mp3',
-        "A7": 'A7.mp3',
-      },
-      baseUrl: '/samples/piano/',
-      onload: () => {
-        console.log('Sampler loaded');
-      }
-    }).toDestination();
-
-    polySynth = new Tone.PolySynth(Tone.Synth).toDestination();
-  }
-});
 
 </script>
 
@@ -75,8 +46,8 @@ onMounted(() => {
   width: 1100px; height: 300px;
   border: 1px solid black;
   border-radius: 15px;
+  padding: 15px 15px 20px;
   border-top-left-radius: 40px; border-top-right-radius: 40px;
-  padding: 2em 4em 1em;
   background-color: rgb(42,42,42);
 }
 /*  Controls  */
@@ -93,3 +64,7 @@ onMounted(() => {
 }
 
 </style>
+
+function useGlobalStore() {
+  throw new Error('Function not implemented.');
+}

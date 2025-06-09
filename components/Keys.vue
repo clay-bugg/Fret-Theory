@@ -43,7 +43,7 @@ const { chordNotes } = storeToRefs(chord);
 .keys {
   display: flex;
   align-items: flex-start; justify-content: space-between;
-  width: 100%; height: 100%;
+  width: 100%; height: 80%;
   position: relative;
   margin-bottom: 1em;
   z-index: 0;
@@ -55,9 +55,8 @@ const { chordNotes } = storeToRefs(chord);
 .key {
   display: flex; flex-direction: column;
   align-items: center; justify-content: flex-end;
-  
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   padding-bottom: 0.2em;
   cursor: pointer;
   color: black;
