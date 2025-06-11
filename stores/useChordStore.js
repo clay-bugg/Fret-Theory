@@ -8,7 +8,7 @@ export const useChordStore = defineStore('chord', () => {
   const { notes } = useGlobalStore();
   const { rootNote } = useGlobalStore();
 
-  const SelectedChord = ref('');
+  const selectedChord = ref('');
 
   const chordTypes = ref([
     { label: 'Major', symbol: 'maj', intervals: [0, 4, 7] },
@@ -27,29 +27,14 @@ export const useChordStore = defineStore('chord', () => {
   const selectedChordType = ref('');
 
   const selectChordType = computed(() => { 
-      return chordTypes.value.find((chord) => chord === selectedChordType.value);
+      return chordTypes.value.find((chord) => chord === selectedChordType.label);
     });
   
-  const chordNotes = computed(() => {
-    if (!rootNote.value || !selectedChord.value) return [];
-    const rootIndex = notes.value.indexOf(rootNote.value);
-    if (rootIndex === -1) return [];
 
-    return selectedChord.value.intervals.map((interval) => {
-      return notes.value[(rootIndex + interval) % notes.value.length];
-    });
-  });
-
-  const chordFormula = computed(() => {
-      return selectedChord.value?.formula ?? [];
-  });
   
     return {
       chordTypes,
       selectChordType,
       selectedChordType,
-      chordNotes,
-      chordFormula,
-     
     };
   });

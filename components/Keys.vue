@@ -7,9 +7,6 @@
       :class="{
         black: key.sharp,
         white: !key.sharp,
-        'highlighted-note': chord.chordNotes.includes(key.note),
-        interval: chord.chordNotes.includes(key.note),
-        'root-note': key.note === rootNote,
       }"
       @mousedown="() => playKey(key.note, key.octave)"
       @mouseup="() => stopKey(key.note, key.octave)"
@@ -43,11 +40,9 @@ const { chordNotes } = storeToRefs(chord);
 .keys {
   display: flex;
   align-items: flex-start; justify-content: space-between;
-  width: 100%; height: 80%;
+  width: 100%; 
   position: relative;
-  margin-bottom: 1em;
   z-index: 0;
-  overflow: hidden;
   border-top: 10px solid black;
   border-left: 2px solid black;
   border-right: 2px solid black;
@@ -55,8 +50,8 @@ const { chordNotes } = storeToRefs(chord);
 .key {
   display: flex; flex-direction: column;
   align-items: center; justify-content: flex-end;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
   padding-bottom: 0.2em;
   cursor: pointer;
   color: black;
@@ -84,7 +79,7 @@ const { chordNotes } = storeToRefs(chord);
   left: calc(100% / 21 * 0.3);
   z-index: 2;
   overflow: hidden;
-  margin-left: calc(100% / 21 * -0.6);
+  margin-left: calc(100% / 21 * -0.66);
   padding-bottom: 0.4em;
   border: 2px solid black;
   border-top: 1px solid black;

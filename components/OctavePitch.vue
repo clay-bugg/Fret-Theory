@@ -3,8 +3,7 @@
   <p>Pitch</p>
   <div class="base-octave-selector">
     <button @click="store.changeOctaveRange('-')">-</button>
-    <p>{{ startingOctave }}</p>
-
+      <p>{{ startingOctave }}</p>
     <button @click="store.changeOctaveRange('+')">+</button>
   </div>
 </div>
