@@ -40,7 +40,7 @@ const { chordNotes } = storeToRefs(chord);
 .keys {
   display: flex;
   align-items: flex-start; justify-content: space-between;
-  width: 100%; 
+  width: 100%; height: 180px;
   position: relative;
   z-index: 0;
   border-top: 10px solid black;

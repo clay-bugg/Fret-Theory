@@ -1,13 +1,17 @@
 :root {
+  /*---Colors---*/
   --mainblack: #272727;
   --charcoal: #3B3B3B;
   --secondarygrey: rgb(159, 159, 159);
   --offwhite: rgb(211, 211, 211);
+  /*---Typography---*/
+  --mainfont: 'Inter', 'sans-serif';
+
 }
 
 html {
   font-size: 18px;
-  font-family: 'Inter';
+  font-family: var(--mainfont);
 }
 
 body {
@@ -15,13 +19,12 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: var(--offwhite);
-  font-family: 'Helvetica';
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Inter';
+  font-family: var(--mainfont);
 }
 
 ul,
@@ -39,8 +42,8 @@ input {
   font-family: inherit;
 }
 .control {
-  display: flex; flex-direction: row-reverse;
-  align-items: center; justify-content: space-evenly;
+  display: flex;
+  align-items: center; justify-content: center;
   width: fit-content; height: 100%;
   color: var(--offwhite);
   font-weight: 200;
@@ -57,7 +60,7 @@ input {
   cursor: pointer;
 }
 .control-button:hover {
-  filter: brightness(95%);
+  filter: brightness(90%);
 }
 .control-button:active {
   filter: brightness(100%);

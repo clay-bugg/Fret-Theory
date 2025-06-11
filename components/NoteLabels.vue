@@ -11,10 +11,7 @@ import { storeToRefs } from 'pinia';
 
 //--Store--//
 const store = useGlobalStore();
-const { notesShown } = storeToRefs(store);
-const { noteLabels } = storeToRefs(store);
-const { displayType } = storeToRefs(store);
-
+const { notesShown, noteLabels, displayType } = storeToRefs(store);
 //--Functions--//
 
 function changeNotesShown() { 
