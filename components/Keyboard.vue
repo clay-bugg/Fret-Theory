@@ -1,15 +1,16 @@
 <template>
 <div class="keyboard">
   <div class="controls">
+    <OctavePitch />
     <KeyboardDisplay />
+    <ToneSelector  />
+    <NoteLabels  />
   </div>
   <div class="keys">
     <Keys />
   </div>
 </div>
-    <OctavePitch  style="color: black; border: 1px solid black; margin: 2px; width: fit-content"/>
-    <NoteLabels  style="color: black; border: 1px solid black; margin: 2px; width: fit-content"/>
-    <ToneSelector  style="color: black; border: 1px solid black; margin: 2px; width: fit-content"/>
+  
     <ChordSelector style="color: black; border: 1px solid black; margin: 2px; width: fit-content"/>
     <ChordPlayed style="color: black; border: 1px solid black; margin: 2px; width: fit-content"/>
 </template>

@@ -1,35 +1,45 @@
 <template>
   <div class="control">
     <p>Note Labels</p>
-      <div v-for="(label, index) in noteLabels"
-       :key="index"
-        class="note-label-selector">
-        <input v-model="notesShown" 
-          :value="label"
-          :class="{ active: notesShown === label }"
-          type="radio"
-          name="note-label"/>
-        {{ label }}
-      </div>
-   </div>
+    <button @click="changeNotesShown"></button>
+  </div>
 </template>
 
 <script setup>
+//--Imports--//
 import { storeToRefs } from 'pinia';
+
+//--Store--//
 const store = useGlobalStore();
-const { notesShown, noteLabels } = storeToRefs(store);
+const { notesShown } = storeToRefs(store);
+const { noteLabels } = storeToRefs(store);
+const { displayType } = storeToRefs(store);
+
+//--Functions--//
+
+function changeNotesShown() { 
+  const currentIndex = noteLabels.value.indexOf(notesShown.value);
+  const nextIndex = (currentIndex + 1) % noteLabels.value.length;
+  notesShown.value = noteLabels.value[nextIndex];
+  displayType.value = notesShown.value;
+}
+
+
 </script>
 
 <style scoped>
-.note-label-selector {
+  button {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: fit-content;
-  
+  align-items: center; justify-content: center;
+  width: 20px; height: 20px;
+  border: 1px solid black; border-radius: 5px;
+  background-color: var(--secondarygrey);
+  cursor: pointer;
+  }
+  button:hover {
+    filter: brightness(95%);
+  }
+button:active {
+  filter: brightness(100%);
 }
-.note-label-selector input {
-  width: 10px;
-  height: 10px;
-}
-</style>
+  </style>

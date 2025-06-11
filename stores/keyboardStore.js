@@ -5,19 +5,19 @@ import { useGlobalStore } from './globalStore.js';
 
 export const useKeyboardStore = defineStore('keyboard', () => {
   //---Stores---//
-  const store = useGlobalStore();
-  const startingOctave = store.startingOctave;
+
   //---Static---//
 
   //---Key Generation---//Ÿ
   const octaves = [1, 2, 3];
 
   const pianoKeys = computed(() => {
+    const notes = ['C', 'Cs', 'D', 'Ds', 'E', 'F', 'Fs', 'G', 'Gs', 'A', 'As', 'B'];
     const keys = [];
     octaves.forEach((octave) => {
-      store.notes.forEach((note) => {
+      notes.forEach((note) => {
         keys.push({ note: note, octave: octave, sharp: note.includes('s') });
-      });
+      })
     });
     return keys;
   });

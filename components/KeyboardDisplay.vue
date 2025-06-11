@@ -1,5 +1,6 @@
 <template>
   <div class="display">
+   <h6>{{ store.displayTitle }}</h6>
    <p>{{ store.displayType }}</p>
   </div>
 </template>
@@ -34,11 +35,11 @@ function display(b) {
   width: 200px; height: 60px;
   border: 5px solid black;
   border-radius: 5px;
-  background-image: url('public/images/MainDisplay.png/');
+  background-image: url('public/images/KeyboardDisplay.png/');
   background-position: center;
   background-size: cover;
   position: relative;
-  font-size: 30px;
+  font-size: 2rem;
 }
 
 </style>
