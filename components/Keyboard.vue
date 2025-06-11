@@ -1,16 +1,17 @@
 <template>
 <div class="keyboard">
   <div class="controls">
-    <OctavePitch />
     <KeyboardDisplay />
-    <ToneSelector  />
-    <NoteLabels  />
+    <div class="control-buttons">
+      <OctavePitch />
+      <ToneSelector  />
+      <NoteLabels  />
+    </div>
   </div>
   <div class="keys">
     <Keys />
   </div>
 </div>
-  
     <ChordSelector style="color: black; border: 1px solid black; margin: 2px; width: fit-content"/>
     <ChordPlayed style="color: black; border: 1px solid black; margin: 2px; width: fit-content"/>
 </template>
@@ -42,12 +43,17 @@ let polySynth;
 /*  Controls  */
 .controls {
   display: flex;
-  align-items: center; justify-content: space-evenly;
+  align-items: center; justify-content: center; gap: 10px;
   width: 100%;
   background-color: #3B3B3B;
   border-radius: 4px;
   border-top-left-radius: 30px; border-top-right-radius: 30px;
   padding: 20px 0;
+}
+.control-buttons {
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: space-evenly;
+  height: 100%;
 }
 .keys {
   display: flex;

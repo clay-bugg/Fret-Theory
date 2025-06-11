@@ -32,14 +32,15 @@ function display(b) {
 .display {
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  width: 200px; height: 60px;
+  width: 300px; height: 70px;
   border: 5px solid black;
   border-radius: 5px;
   background-image: url('public/images/KeyboardDisplay.png/');
   background-position: center;
   background-size: cover;
   position: relative;
-  font-size: 2rem;
+  font-family: 'Wallpoet';
+  font-size: 3rem;
 }
 
 </style>

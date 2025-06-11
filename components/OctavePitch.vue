@@ -2,8 +2,8 @@
   <div class="control">
     <p>Pitch</p>
     <div class="base-octave-selector">
-      <button @click="changeOctaveRange('-')">-</button>
-      <button @click="changeOctaveRange('+')">+</button>
+      <button @click="changeOctaveRange('-') " class="control-button">-</button>
+      <button @click="changeOctaveRange('+')" class="control-button">+</button>
     </div>
   </div>
 </template>
@@ -47,9 +47,5 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 width: fit-content;
-}
-.base-octave button {
-  width: 20px;
-  height: 20px;
 }
 </style>
