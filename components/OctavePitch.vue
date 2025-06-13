@@ -1,10 +1,7 @@
 <template>
   <div class="control">
-    <p>Pitch</p>
-    <div class="base-octave-selector">
-      <button @click="changeOctaveRange('-') " class="control-button">-</button>
-      <button @click="changeOctaveRange('+')" class="control-button">+</button>
-    </div>
+    <button @click="changeOctave" class="control-button">Octave</button>
+    <Leds :targetArray="octaves" :selected="startingOctave"/>
   </div>
 </template>
 
@@ -13,33 +10,18 @@
 //--Imports--//
 import { storeToRefs } from 'pinia';
 
-//--Stores--//
+//--Store--//
 const store = useGlobalStore();
-const { startingOctave } = storeToRefs(store);
-const { displayType } = storeToRefs(store);
+const { startingOctave, displayType } = storeToRefs(store);
+
+const octaves = [...Array(6).keys()];
 
 //--Functions--//
-function changeOctaveRange(op) {
-    if (op === '+') {
-      if (startingOctave.value === 6) {
-        return;
-      } else {
-        startingOctave.value++
-        displayType.value = startingOctave.value.toString();
-      }
-  
-    } else if (op === '-') {
-      if (startingOctave.value === 1) {
-        return;
-      } else {
-        startingOctave.value--
-        displayType.value = startingOctave.value.toString();
-      }
-    }
-  
-};
-  
- </script>
+function changeOctave() {
+  startingOctave.value = (startingOctave.value + 1) % octaves.length;
+  displayType.value = startingOctave.value + 1;
+}
+</script>
 
 <style scoped>
 .base-octave-selector {

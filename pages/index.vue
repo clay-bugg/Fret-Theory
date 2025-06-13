@@ -1,7 +1,6 @@
 <template>
   <Keyboard />
-  <InfoPanel />
-  
+  <ChordPlayed />
 </template>
 
 <script setup>

@@ -1,9 +1,15 @@
 <template>
-  <div class="chord-info"></div>
+  <div class="chord-played">
+    {{ selectedChord }}
+  </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { storeToRefs } from "pinia";
+
+const chord = useChordStore();
+const { selectedChord } = storeToRefs(chord);
+
 </script>
 
 <style scoped>

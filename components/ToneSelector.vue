@@ -1,7 +1,7 @@
 <template>
   <div class="control">
-    <p>Tone</p>
-    <button @click="changeTone" class="control-button"></button>
+    <button @click="changeTone" class="control-button">Tone</button>
+    <Leds :targetArray="tones" :selected="currentTone"/>
   </div>
 </template>
 

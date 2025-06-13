@@ -1,24 +1,19 @@
 <template>
   <div class="keys">
     <div
-      v-for="key in keyboard.pianoKeys"
+      v-for="key in keys"
       :key="`${key.note}${key.octave}`"
       class="key"
       :class="{
         black: key.sharp,
         white: !key.sharp,
       }"
-      @mousedown="() => playKey(key.note, key.octave)"
-      @mouseup="() => stopKey(key.note, key.octave)"
-      @mouseleave="() => stopKey(key.note, key.octave)"
-      @keydown="() => playKeyboardKey(key.note, key.octave)"
-      @keyup="() => stopKeyboardKey(key.note, key.octave)"
     >
       <span v-if="notesShown === 'all'">
-        {{ key.note }}
+        {{ key.note.replace('s', '#') }}
       </span>
       <span v-else-if="notesShown === 'chord'">
-        {{ key.note }}
+        {{ key.note.replace('s', '#') }}
       </span>
     </div>
   </div>
@@ -26,13 +21,13 @@
 
 <script setup>
 
-const globalStore = useGlobalStore();
-const keyboard = useKeyboardStore();
-const chord = useChordStore();
+const gStore = useGlobalStore();
+const kStore = useKeyboardStore();
+const cStore = useChordStore();
 
-const { notesShown, rootNote } = storeToRefs(globalStore);
-const { pianoKeys } = storeToRefs(keyboard);
-const { chordNotes } = storeToRefs(chord);
+const { notesShown, rootNote } = storeToRefs(gStore);
+const { keys, playKey, stopKey } = storeToRefs(kStore);
+const { chordNotes } = storeToRefs(cStore);
 
 </script>
 
@@ -67,7 +62,7 @@ const { chordNotes } = storeToRefs(chord);
   width: 100%; height: 100%;  
   position: relative;
   z-index: 1;
-  background-color: white; color: black;
+  background-color: var(--offwhite);
   border: 1px solid black;
 }
 .white:hover {
@@ -86,6 +81,7 @@ const { chordNotes } = storeToRefs(chord);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   background-color: black; color: white;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.565);
 
 }
 .black:hover {

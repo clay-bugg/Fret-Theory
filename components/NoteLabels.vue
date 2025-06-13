@@ -1,7 +1,7 @@
 <template>
   <div class="control">
-    <p>Labels</p>
-    <button class="control-button" @click="changeNotesShown"></button>
+    <button class="control-button" @click="changeNotesShown">Labels</button>
+    <Leds :targetArray="noteLabels" :selected="notesShown"/>
   </div>
 </template>
 
@@ -12,12 +12,14 @@ import { storeToRefs } from 'pinia';
 //--Store--//
 const store = useGlobalStore();
 const { notesShown, noteLabels, displayType } = storeToRefs(store);
-//--Functions--//
 
+//--Functions--//
 function changeNotesShown() { 
   const currentIndex = noteLabels.value.indexOf(notesShown.value);
   const nextIndex = (currentIndex + 1) % noteLabels.value.length;
   notesShown.value = noteLabels.value[nextIndex];
   displayType.value = notesShown.value;
 }
+
 </script>
+

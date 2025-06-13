@@ -1,32 +1,34 @@
 //---Imports---//
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
-import { useGlobalStore } from './globalStore.js';
 
 export const useKeyboardStore = defineStore('keyboard', () => {
-  //---Stores---//
-
   //---Static---//
-
-  //---Key Generation---//Ÿ
-  const octaves = [1, 2, 3];
-
-  const pianoKeys = computed(() => {
-    const notes = ['C', 'Cs', 'D', 'Ds', 'E', 'F', 'Fs', 'G', 'Gs', 'A', 'As', 'B'];
-    const keys = [];
+  const notes = ref(['C', 'Cs', 'D', 'Ds', 'E', 'F', 'Fs', 'G', 'Gs', 'A', 'As', 'B']);
+  const octaves = [...Array(3).keys()];
+  //---Key Generation---//
+  const keys = computed(() => {
+    const result = [];
     octaves.forEach((octave) => {
-      notes.forEach((note) => {
-        keys.push({ note: note, octave: octave, sharp: note.includes('s') });
-      })
+      notes.value.forEach((note) => {
+        result.push({ note: note, octave: octave, sharp: note.includes('s') });
+      });
     });
-    return keys;
+    return result;
   });
-
+  //---Functions---//
+  function playKey(note, octave) {
+    return note + octave;
+  }
+  function stopKey(note, octave) {
+    return note + octave;
+  }
   return {
-    pianoKeys,
+    notes,
+    octaves,
+    keys,
+    playKey,
+    stopKey,
   };
-
 });
-
-  
   
