@@ -1,12 +1,17 @@
-//---Imports---//
-import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
 
 export const useKeyboardStore = defineStore('keyboard', () => {
-  //---Static---//
   const notes = ref(['C', 'Cs', 'D', 'Ds', 'E', 'F', 'Fs', 'G', 'Gs', 'A', 'As', 'B']);
   const octaves = [...Array(3).keys()];
-  //---Key Generation---//
+  const startingOctave = ref(3);
+
+
+  function changeOctave() {
+    startingOctave.value = (startingOctave.value + 1) % octaves.length;
+    displayType.value = startingOctave.value + 1;
+  }
+
   const keys = computed(() => {
     const result = [];
     octaves.forEach((octave) => {
@@ -16,19 +21,13 @@ export const useKeyboardStore = defineStore('keyboard', () => {
     });
     return result;
   });
-  //---Functions---//
-  function playKey(note, octave) {
-    return note + octave;
-  }
-  function stopKey(note, octave) {
-    return note + octave;
-  }
+
   return {
     notes,
     octaves,
+    startingOctave,
+    changeOctave,
     keys,
-    playKey,
-    stopKey,
-  };
-});
-  
+  }
+
+})

@@ -1,16 +1,12 @@
-import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
-import { useGlobalStore } from './globalStore.js';
-import { useKeyboardStore } from './keyboardStore.js';
+import { defineStore } from 'pinia'
+import { ref, computed, watch } from 'vue'
+import { useKeyboardStore } from './keyboardStore'
 
-
-export const useChordStore = defineStore('chord', () => {
-
+export const useChordStore = defineStore('chord', () => { 
   const rootNote = ref('');
-  const selectedChordType = ref('');
-  const selectedChord = computed(() => { 
-   return rootNote.value + selectedChordType.value;
-  });
+  const chordType = ref('');
+  const selectedChord = ref(rootNote + chordType)
+
   const chordTypes = ref([
     { label: 'Major', symbol: 'maj', intervals: [0, 4, 7] },
     { label: 'Minor', symbol: 'm', intervals: [0, 3, 7] },
@@ -26,20 +22,25 @@ export const useChordStore = defineStore('chord', () => {
   ]);
 
   const chordLabel = computed(() => {
-    return chordTypes.value.find((chord) => chord === selectedChordType.label);
+    return chordTypes.value.find((chord) => chord === chordType.label);
   });
-  
-const notes = useKeyboardStore();
 
+  const chordNotes = computed(() => {
+    const { notes } = useKeyboardStore()
+    const chord = chordTypes.value.find(c => c.value === chordType.value)
+    if (!chord) return []
 
+    const rootIndex = notes.indexOf(rootNote.value)
+    return chord.intervals.map(i => notes[(rootIndex + i) % 12])
+  })
 
-  
   return {
     rootNote,
-    selectedChordType,
+    chordType,
     selectedChord,
     chordTypes,
-        };
-      
-    });
+    chordLabel,
+    chordNotes,
+  }
   
+})

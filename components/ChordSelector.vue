@@ -16,18 +16,25 @@
             {{ type.label }}
         </option>
       </select>
-
     </div>
   </div>
 </template>
 
 <script setup>
-const store = useGlobalStore();
-const keys = useKeyboardStore();
-const chords = useChordStore();
 
-const { notes } = keys;
-const { chordTypes, rootNote } = chords;
+import { storeToRefs } from 'pinia'
+
+const { rootNote, chordLabel, chordTypes } = storeToRefs(useChordStore());
+const { notes } = storeToRefs(useUiStore());
+
+
+
+
+
+
+
+
+
 </script>
 
 <style scoped>

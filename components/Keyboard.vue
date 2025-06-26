@@ -3,18 +3,12 @@
     <Controls />
     <Keys />
   </div>
-  <ChordSelector style="color: black; border: 1px solid black; margin: 2px; width: fit-content"/>
-  <ChordPlayed style="color: black; border: 1px solid black; margin: 2px; width: fit-content"/>
+  <ChordSelector style="color: black; border: 1px solid black; margin: 2px; width: fit-content" />
+  <ChordPlayed style="color: black; border: 1px solid black; margin: 2px; width: fit-content" />
 </template>
 
 <script setup>
-
-import * as Tone from 'tone';
-import { onMounted } from 'vue';
-
-let synth;
-let sampler;
-let polySynth;
+import { ref } from 'vue';
 
 </script>
 

@@ -5,13 +5,19 @@
 </template>
 
 <script setup>
-import { storeToRefs } from "pinia";
+import { storeToRefs } from 'pinia';
 
-const chord = useChordStore();
-const { selectedChord } = storeToRefs(chord);
+const { selectedChord } = storeToRefs(useChordStore());
+
+
+
 
 </script>
 
 <style scoped>
-
+.chord-played {
+  border: 1px solid black;
+  width: 200px;
+  height: 200px;
+}
 </style>

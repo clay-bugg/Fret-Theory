@@ -8,11 +8,12 @@
 <script setup>
 
 //--Imports--//
+
 import { storeToRefs } from 'pinia';
 
 //--Store--//
-const store = useGlobalStore();
-const { startingOctave, displayType } = storeToRefs(store);
+const { startingOctave } = storeToRefs(useKeyboardStore());
+const { displayType } = storeToRefs(useUiStore());
 
 const octaves = [...Array(6).keys()];
 
@@ -25,9 +26,9 @@ function changeOctave() {
 
 <style scoped>
 .base-octave-selector {
-display: flex;
+display: flex; 
 align-items: center;
 justify-content: space-between;
 width: fit-content;
 }
-</style>
+</style> 

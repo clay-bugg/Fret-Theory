@@ -7,7 +7,13 @@
       :class="{
         black: key.sharp,
         white: !key.sharp,
+        'highlighted-note': chordNotes.includes(key.note),
+        interval: chordNotes.includes(key.note),
+        'root-note': key.note === rootNote,
       }"
+        @mousedown="playKey(key.note, key.octave)"
+        @mouseup="stopKey(key.note, key.octave)"
+        @mouseleave="stopKey(key.note, key.octave)"
     >
       <span v-if="notesShown === 'all'">
         {{ key.note.replace('s', '#') }}
@@ -21,13 +27,15 @@
 
 <script setup>
 
-const gStore = useGlobalStore();
-const kStore = useKeyboardStore();
-const cStore = useChordStore();
+import { storeToRefs } from 'pinia'
 
-const { notesShown, rootNote } = storeToRefs(gStore);
-const { keys, playKey, stopKey } = storeToRefs(kStore);
-const { chordNotes } = storeToRefs(cStore);
+const { keys } = storeToRefs(useKeyboardStore())
+const { chordNotes, rootNote } = storeToRefs(useChordStore())
+const { notesShown } = storeToRefs(useUiStore())
+
+const toneStore = useToneStore()
+const { playKey, stopKey } = toneStore
+
 
 </script>
 
