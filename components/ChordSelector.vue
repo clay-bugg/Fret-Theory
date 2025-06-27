@@ -3,7 +3,7 @@
     <p>Chord Finder</p>
     <div class="chord-finder-options">
 
-      <select v-model="rootNote.value"  class="note-selector">
+      <select v-model="rootNote"  class="note-selector">
         <option v-for="note in notes" :key="note" :value="note">
           {{ note.replace('s', '#') }}
         </option>
@@ -25,7 +25,7 @@
 import { storeToRefs } from 'pinia'
 
 const { rootNote, chordLabel, chordTypes } = storeToRefs(useChordStore());
-const { notes } = storeToRefs(useUiStore());
+const { notes } = storeToRefs(useKeyboardStore());
 
 
 

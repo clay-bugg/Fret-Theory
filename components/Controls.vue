@@ -1,9 +1,9 @@
 <template>
   <div class="controls">
     <div class="control-buttons">
-      <ToneSelector  />
+      <ToneSelector />
       <OctavePitch />
-      <NoteLabels  />
+      <NoteLabels />
     </div>
     <KeyboardDisplay />
   </div>

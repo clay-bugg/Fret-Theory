@@ -1,5 +1,7 @@
 <template>
   <div class="keyboard">
+  
+    <ChordSelector />
     <Controls />
     <Keys />
   </div>

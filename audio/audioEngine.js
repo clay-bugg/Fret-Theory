@@ -23,13 +23,18 @@ export function initAudio() {
 
   sampler = new Tone.Sampler({
     urls: {
-      A1: 'A1.mp3',
-      A2: 'A2.mp3',
-      A3: 'A3.mp3',
-      A4: 'A4.mp3',
-      A5: 'A5.mp3',
-      A6: 'A6.mp3',
-      A7: 'A7.mp3'
+      'A1': 'A1.m,p3',
+      'A#1': 'As1.mp3',
+      'B1': 'B1.m,p3',
+      'C1': 'C1.m,p3',
+      'C#1': 'Cs1.mp3',
+      'D1': 'D1.m,p3',
+      'D#1': 'Ds1.mp3',
+      'E1': 'E1.m,p3',
+      'F1': 'F1.m,p3',
+      'F#1': 'Fs1.mp3',
+      'G1': 'G1.m,p3',
+      'G#1': 'Gs1.mp3',
     },
     baseUrl: '/samples/piano/',
     onload: () => console.log('Sampler loaded')
