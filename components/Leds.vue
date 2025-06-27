@@ -31,12 +31,11 @@ const currentIndex = computed(() =>
   width: 
   10px; height: 10px;
   border-radius: 50%;
-  background-color: red;
+  background-color: rgb(97, 0, 0);
   opacity: 0.4;
-  transition: linear-gradient(45deg, rgb(168, 17, 17), red);
 }
 .led.active {
-  background: linear-gradient(45deg, #0c6d0c, #44b100);
+  background: rgb(162, 0, 0);
   opacity: 1;
 }
 </style>

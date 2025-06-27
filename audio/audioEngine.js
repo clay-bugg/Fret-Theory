@@ -1,4 +1,6 @@
 import * as Tone from 'tone'
+import { storeToRefs } from 'pinia';
+
 
 let synth
 let sampler
@@ -6,6 +8,8 @@ let polySynth
 
 export function initAudio() {
   if (typeof window === 'undefined') return
+
+  const toneType = storeToRefs(useToneStore());
 
   synth = new Tone.Synth({
     oscillator: { type: 'sine' },
@@ -27,7 +31,7 @@ export function initAudio() {
       A6: 'A6.mp3',
       A7: 'A7.mp3'
     },
-    baseUrl: '/sounds/piano_samples/',
+    baseUrl: '/samples/piano/',
     onload: () => console.log('Sampler loaded')
   }).toDestination()
 

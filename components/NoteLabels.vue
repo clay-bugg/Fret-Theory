@@ -16,10 +16,10 @@ const noteLabels = ['all', 'chord', 'none'];
 
 //--Functions--//
 function changeNotesDisplayed() { 
-  const currentIndex = noteLabels.value.indexOf(notesDisplayed.value);
-  const nextIndex = (currentIndex + 1) % noteLabels.value.length;
-  notesDisplayed.value = noteLabels.value[nextIndex];
-  displayType.value = notesDisplayed.value;
+  const currentIndex = noteLabels.indexOf(notesShown.value);
+  const nextIndex = (currentIndex + 1) % noteLabels.length;
+  notesShown.value = noteLabels[nextIndex];
+  displayType.value = notesShown.value;
 }
 
 </script>
