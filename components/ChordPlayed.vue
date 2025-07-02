@@ -16,8 +16,11 @@ const { selectedChord } = storeToRefs(useChordStore());
 
 <style scoped>
 .chord-played {
+  display: flex;
+  align-items: center; justify-content: center;
+  width: 500px; height: 100px;
+  margin: 0 auto;
   border: 1px solid black;
-  width: 200px;
-  height: 200px;
+  
 }
 </style>

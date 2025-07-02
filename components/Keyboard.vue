@@ -5,8 +5,6 @@
     <Controls />
     <Keys />
   </div>
-  <ChordSelector style="color: black; border: 1px solid black; margin: 2px; width: fit-content" />
-  <ChordPlayed style="color: black; border: 1px solid black; margin: 2px; width: fit-content" />
 </template>
 
 <script setup>

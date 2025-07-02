@@ -9,7 +9,7 @@
         </option>
       </select>
 
-      <select v-model="chordLabel" class="chord-selector">
+      <select v-model="chordType" class="chord-selector">
         <option v-for="type in chordTypes"
           :key="type.value"
           :value="type.value">
@@ -24,7 +24,7 @@
 
 import { storeToRefs } from 'pinia'
 
-const { rootNote, chordLabel, chordTypes } = storeToRefs(useChordStore());
+const { rootNote, chordType, chordTypes } = storeToRefs(useChordStore());
 const { notes } = storeToRefs(useKeyboardStore());
 
 

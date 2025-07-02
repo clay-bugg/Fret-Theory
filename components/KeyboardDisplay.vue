@@ -1,7 +1,7 @@
 <template>
   <div class="display">
    <h6>{{ displayTitle }}</h6>
-   <p>{{ displayType }}</p>
+   <p>{{ }}</p>
   </div>
 </template>
 

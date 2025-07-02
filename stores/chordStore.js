@@ -3,10 +3,9 @@ import { ref, computed, watch } from 'vue'
 import { useKeyboardStore } from './keyboardStore'
 
 export const useChordStore = defineStore('chord', () => { 
-  const rootNote = ref('');
-  const chordType = ref('');
+  const rootNote = ref('')
+  const chordType = ref('')
   const selectedChord = ref(rootNote + chordType)
-
   const chordTypes = ref([
     { label: 'Major', symbol: 'maj', intervals: [0, 4, 7] },
     { label: 'Minor', symbol: 'm', intervals: [0, 3, 7] },
@@ -19,12 +18,8 @@ export const useChordStore = defineStore('chord', () => {
     { label: 'Suspended 4th', symbol: 'sus4', intervals: [0, 5, 7] },
     { label: 'Major 6th', symbol: 'maj6', intervals: [0, 4, 7, 9] },
     { label: 'Major 7♭5', symbol: 'maj7♭5', intervals: [0, 4, 6, 11] },
-  ]);
-
-  const chordLabel = computed(() => {
-    return chordTypes.value.find((chord) => chord === chordType.label);
-  });
-
+  ])
+  const chordLabel = ref(`${rootNote.value} ${chordType.value}`)
   const chordNotes = computed(() => {
     const { notes } = useKeyboardStore()
     const chord = chordTypes.value.find(c => c.value === chordType.value)
@@ -42,5 +37,4 @@ export const useChordStore = defineStore('chord', () => {
     chordLabel,
     chordNotes,
   }
-  
 })
